@@ -39,4 +39,18 @@ class Lead
 
         return $result['result'];
     }
+
+    /**
+     * Возвращает номер в очереди
+     * @return int
+     */
+    public function getQueueNumber()
+    {
+        $result = \CRest::call('crm.lead.list', [
+            'select' => ['ID'],
+            'filter' => ['STATUS_ID' => 'NEW']
+        ]);
+        return $result['total'] += 1;
+
+    }
 }

@@ -22,11 +22,15 @@ class MainController extends BaseController
             if ($this->model->formValidate($_POST)) {
                 $lead = new Lead($this->model->fields);
 
-                if (!$lead->send()) {
-                    echo 'Лид успешно создан';
+                if ($lead->send()) {
+                    $queueNumber = $lead->getQueueNumber();
+                    $context['success_message'] = $queueNumber
+                        ? sprintf('Спасибо за обращение, Ваш номер в очереди: %s', $queueNumber)
+                        : sprintf('Спасибо за обращение, мы свяжемся с вами в ближайшее время.');
+
                 } else {
                     //Можно создать и использовать класс
-                    // для работы с логами
+                    // для работы с логами (на случай если лид не создастся)
                 }
 
             } else {

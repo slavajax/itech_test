@@ -1,6 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-3">
+            <?if (isset($success_message)):?>
+                <div class="alert alert-success" role="alert">
+                    <?=$success_message;?>
+                </div>
+            <?endif;?>
             <form action="/" method="post">
                 <div class="mb-3">
                     <label for="inputName" class="form-label">Имя<sup>*</sup>:</label>
