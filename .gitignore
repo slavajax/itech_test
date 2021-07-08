@@ -1,2 +1,5 @@
 .idea/
 .htaccess
+application/config/app.php
+logs/
+*.log

@@ -10,3 +10,12 @@ function debug($str, $exit = false)
     if ($exit)
         exit;
 }
+
+function print_rr($arSourse, $exit = false)
+{
+    echo '<pre>';
+    print_r($arSourse);
+    echo '</pre>';
+    if ($exit)
+        die();
+}
